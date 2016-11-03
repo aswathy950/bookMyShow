@@ -1,7 +1,10 @@
 (function() {
-	'use strict';
+    'use strict';
 
-	var bookMyshowModule = angular.module('bookMyshow', [		
-		'ionic'
-	]);	
+    var bookMyshowModule = angular.module('bookMyshow', [
+        'ionic',
+        'ui.router',
+        'bookMyshow.login',
+        'bookMyshow.home'
+    ]);
 })();
