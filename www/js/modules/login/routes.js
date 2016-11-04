@@ -9,7 +9,7 @@
                 views: {
                     'content@': {
                         templateUrl: 'partials/login/login.html',
-                        controller: ''
+                        controller: 'bookMyshow_LoginCntrl'
                     }
                 }
             })
