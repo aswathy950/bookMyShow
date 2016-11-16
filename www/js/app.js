@@ -3,7 +3,8 @@ import 'ionic.app.scss';
 
 import router from './app.router';
 import loginModule from './components/login';
-import ProfileModule from './components/profile';
+import movieModule from './components/movie';
+import profileModule from './components/profile';
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
@@ -11,7 +12,8 @@ import ProfileModule from './components/profile';
 angular.module('BookMyShow', [
     'ionic',
     loginModule.name,
-    ProfileModule.name,
+    movieModule.name,
+    profileModule.name,
 
 ])
 

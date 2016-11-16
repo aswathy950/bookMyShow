@@ -1,6 +1,5 @@
 class ProfileCtrl {
     constructor() {
-        this.userName = 'John Doe';
     }
 }
 
