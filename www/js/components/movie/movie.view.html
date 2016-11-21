@@ -10,24 +10,9 @@
     </label>
 </div>
 <div class="list">
-    <a class="item item-thumbnail-left">
-        <img src="./img/kali.jpg">
-        <h2>Pretty Hate Machine</h2>
-        <p>Nine Inch Nails</p>
-    </a>
-     <a class="item item-thumbnail-left">
-        <img src="./img/mili.jpg">
-        <h2>Pretty Hate Machine</h2>
-        <p>Nine Inch Nails</p>
-    </a>
-     <a class="item item-thumbnail-left">
-        <img src="./img/charlie.jpg">
-        <h2>Pretty Hate Machine</h2>
-        <p>Nine Inch Nails</p>
-    </a>
-    <a class="item item-thumbnail-left">
-        <img src="./img/kali.jpg">
-        <h2>Pretty Hate Machine</h2>
-        <p>Nine Inch Nails</p>
+    <a class="item item-thumbnail-left" ng-repeat="movieList in  vm.movieLists">
+        <img ng-src="./img/{{movieList.img}}">
+        <h2>{{movieList.name}}</h2>
+        <p>{{movieList.desc}}</p>
     </a>
 </div>
