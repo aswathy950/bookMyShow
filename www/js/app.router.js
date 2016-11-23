@@ -6,13 +6,7 @@ function AppRouter($stateProvider) {
     $stateProvider
         .state('app', {
             url: "",
-            abstract: true,
-            views: {
-                'header@': {
-                    template: headerView
-                }
-            }
-
+            abstract: true
         })
         .state('app.home', {
             url: "/",
@@ -20,6 +14,9 @@ function AppRouter($stateProvider) {
             views: {
                 'footer@': {
                     template: footerView
+                },
+                'header@': {
+                    template: headerView
                 }
             }
 
