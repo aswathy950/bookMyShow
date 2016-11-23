@@ -1,1 +1,37 @@
 /* Empty. Add your own CSS if you like */
+
+body {
+    background: url(../img/background.jpg)no-repeat center center fixed;
+    background-size: cover;
+}
+
+#content {
+    margin-top: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.loginForm {
+    margin: auto;
+    position: absolute;
+    top: 10%;
+    text-align: center;
+}
+
+.loginForm img {
+    width: 180px;
+}
+.item {
+	background-color: transparent;
+	border-width: 0;
+	border-bottom-width: 1px;
+}
+.loginForm .list, .loginForm .button {
+    margin-top: 50px;
+}
+.loginForm .button {
+    border-radius: 4px;
+}
+.item-select select {
+    background-color: transparent;
+}
