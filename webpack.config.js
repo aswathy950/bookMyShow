@@ -40,6 +40,9 @@ module.exports = {
                     allChunks: true
                 })
             }, {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
+            }, {
                 test: /\.woff/,
                 loader: 'url?prefix=font/&limit=10000&mimetype=application/font-woff&name=assets/[hash].[ext]'
             }, {
