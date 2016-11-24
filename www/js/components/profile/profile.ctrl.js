@@ -1,6 +1,7 @@
 class profileCtrl {
-    constructor(cameraFactory) {
+    constructor(cameraFactory, profileService) {
         var vm = this;
+        vm.userDetails = {};
         vm.getPicture = getPicture;
         vm.takePicture = takePicture;
         vm.profPicture = profPicture;
@@ -9,6 +10,12 @@ class profileCtrl {
             targetWidth: 200,
             targetHeight: 200,
         };
+
+        profileService.userDetails().then(function(response) {
+            vm.userDetails = response.data;
+            vm.picture = "./img/" + vm.userDetails.profPic
+
+        });
 
         function profPicture(options) {
             cameraFactory.getPicture(options).then(function(imageData) {
