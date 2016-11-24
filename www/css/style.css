@@ -21,17 +21,30 @@ body {
 .loginForm img {
     width: 180px;
 }
+
 .item {
-	background-color: transparent;
-	border-width: 0;
-	border-bottom-width: 1px;
+    background-color: transparent;
+    border-width: 0;
+    border-bottom-width: 1px;
 }
-.loginForm .list, .loginForm .button {
+
+.loginForm .list,
+.loginForm .button {
     margin-top: 50px;
 }
+
 .loginForm .button {
     border-radius: 4px;
 }
+
 .item-select select {
     background-color: transparent;
+}
+
+.movieList .item {
+    border-width: 0;
+}
+
+.movieList .item p {
+    color: black;
 }

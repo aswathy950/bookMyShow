@@ -2,6 +2,7 @@
 import 'ionic.app.scss';
 
 import router from './app.router';
+import sharedModule from './components/shared';
 import loginModule from './components/login';
 import movieModule from './components/movie';
 import profileModule from './components/profile';
@@ -11,6 +12,7 @@ import profileModule from './components/profile';
 // the 2nd parameter is an array of 'requires'
 angular.module('BookMyShow', [
     'ionic',
+    sharedModule.name,
     loginModule.name,
     movieModule.name,
     profileModule.name,
