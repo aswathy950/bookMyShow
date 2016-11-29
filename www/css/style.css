@@ -59,9 +59,15 @@ body {
     height: 100px;
     border-radius: 50%;
 }
-.profileData input {
+
+.profileData input, .item-radio .item-content {
     background-color: transparent;
 }
+
 .profileData .item {
     border: 0;
+}
+
+.showTime {
+    width: 100%;
 }

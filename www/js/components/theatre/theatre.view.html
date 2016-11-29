@@ -1,0 +1,9 @@
+<div class="movieList">
+    <div class="list">
+        <a class="item item-thumbnail-left" ng-repeat="theatreList in  vm.theatreLists" ui-sref="app.home.booking">
+            <img ng-src="./img/{{theatreList.img}}">
+            <h2>{{theatreList.name}}</h2>
+            <p>{{theatreList.place}}</p>
+        </a>
+    </div>
+</div>

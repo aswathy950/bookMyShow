@@ -6,6 +6,8 @@ import sharedModule from './components/shared';
 import loginModule from './components/login';
 import movieModule from './components/movie';
 import profileModule from './components/profile';
+import theatreModule from './components/theatre';
+import bookingModule from './components/booking';
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
@@ -16,6 +18,8 @@ angular.module('BookMyShow', [
     loginModule.name,
     movieModule.name,
     profileModule.name,
+    theatreModule.name,
+    bookingModule.name,
 
 ])
 

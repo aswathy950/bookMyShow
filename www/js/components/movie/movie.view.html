@@ -11,7 +11,7 @@
 </div>
 <div class="movieList">
     <div class="list">
-        <a class="item item-thumbnail-left" ng-repeat="movieList in  vm.movieLists">
+        <a class="item item-thumbnail-left" ng-repeat="movieList in  vm.movieLists" ui-sref="app.home.theatre">
             <img ng-src="./img/{{movieList.img}}">
             <h2>{{movieList.name}}</h2>
             <p>{{movieList.desc}}</p>
