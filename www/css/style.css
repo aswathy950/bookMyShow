@@ -1,8 +1,7 @@
 /* Empty. Add your own CSS if you like */
 
 body {
-    background: url(../img/background.jpg)no-repeat center center fixed;
-    background-size: cover;
+    overflow: hidden;
 }
 
 #content {
@@ -13,7 +12,6 @@ body {
 
 .loginForm {
     margin: auto;
-    position: absolute;
     top: 10%;
     text-align: center;
 }
@@ -60,7 +58,8 @@ body {
     border-radius: 50%;
 }
 
-.profileData input, .item-radio .item-content {
+.profileData input,
+.item-radio .item-content {
     background-color: transparent;
 }
 
@@ -70,4 +69,8 @@ body {
 
 .showTime {
     width: 100%;
+}
+
+.view-container {
+    height: auto;
 }

@@ -34,6 +34,7 @@ class profileCtrl {
         function takePicture() {
             vm.options.sourceType = 1;
             vm.profPicture(vm.options);
+
         };
     }
 }
