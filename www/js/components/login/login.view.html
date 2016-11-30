@@ -11,7 +11,7 @@
                 <span class="input-label">Password</span>
                 <input type="password" name="password" id="password" ng-model="vm.password" required ng-change="vm.invalidCred = flase">
             </label>
-            <p class="help-block" ng-show="vm.submitted && vm.signinForm.password.$error.required">Username required</p>
+            <p class="help-block" ng-show="vm.submitted && vm.signinForm.password.$error.required">Password required</p>
         </div>
         <p class="help-block" ng-show="vm.invalidCred">Invalid credentials</p>
         <button class="button button-full button-assertive" type="submit">
