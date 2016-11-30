@@ -1,0 +1,29 @@
+<div class="list">
+    <label class="item item-input item-select">
+        <div class="input-label">
+            Select number of seats:
+        </div>
+        <select>
+            <option selected>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+        </select>
+    </label>
+</div>
+<div class="movieList">
+    <ion-list>
+        <div class="input-label showTime">
+            Select show time:
+        </div>
+        <ion-radio ng-model="showTime" ng-value="'A'">8.30 AM</ion-radio>
+        <ion-radio ng-model="showTime" ng-value="'B'">11.30 AM</ion-radio>
+        <ion-radio ng-model="showTime" ng-value="'C'">6.30 PM</ion-radio>
+        <ion-radio ng-model="showTime" ng-value="'D'">9.30 PM</ion-radio>
+    </ion-list>
+</div>
+<button class="button button-full button-clear button-assertive">
+    BOOK NOW
+</button>

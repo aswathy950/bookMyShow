@@ -16,7 +16,9 @@ function AppRouter($stateProvider) {
                     template: footerView
                 },
                 'header@': {
-                    template: headerView
+                    template: headerView,
+                    controller: 'headerCtrl',
+                    controllerAs: 'vm'
                 }
             }
 

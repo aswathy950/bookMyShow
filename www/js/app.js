@@ -2,18 +2,24 @@
 import 'ionic.app.scss';
 
 import router from './app.router';
+import sharedModule from './components/shared';
 import loginModule from './components/login';
 import movieModule from './components/movie';
 import profileModule from './components/profile';
+import theatreModule from './components/theatre';
+import bookingModule from './components/booking';
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('BookMyShow', [
     'ionic',
+    sharedModule.name,
     loginModule.name,
     movieModule.name,
     profileModule.name,
+    theatreModule.name,
+    bookingModule.name,
 
 ])
 
@@ -34,4 +40,10 @@ angular.module('BookMyShow', [
             }
         });
     })
-    .config(router);
+    .config(router)
+    .config(function($ionicConfigProvider) {
+        $ionicConfigProvider.backButton.text('Go Back').icon('ion-chevron-left');
+        $ionicConfigProvider.navBar.alignTitle("center"); //Places them at the bottom for all OS
+        $ionicConfigProvider.tabs.position("bottom"); //Places them at the bottom for all OS
+        $ionicConfigProvider.tabs.style("standard"); //Makes them all look the same across all OS
+    })
