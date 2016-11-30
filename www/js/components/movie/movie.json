@@ -1,9 +1,21 @@
-[{
-    "name": "Kali",
-    "img": "kali.jpg",
-    "desc": "Nine Inch Nails"
-}, {
-    "name": "Mili",
-    "img": "mili.jpg",
-    "desc": "Nine Inch Nails"
-}]
+{
+    "EKM": [{
+        "name": "Kali",
+        "img": "kali.jpg",
+        "desc": "Nine Inch Nails"
+    }, {
+        "name": "Mili",
+        "img": "mili.jpg",
+        "desc": "Nine Inch Nails"
+    }],
+    "TVM": [{
+        "name": "Kali",
+        "img": "kali.jpg",
+        "desc": "Nine Inch Nails"
+    }, {
+        "name": "Mili",
+        "img": "mili.jpg",
+        "desc": "Nine Inch Nails"
+    }]
+
+}
