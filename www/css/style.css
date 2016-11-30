@@ -74,3 +74,35 @@ body {
 .view-container {
     height: auto;
 }
+
+.checkbox input, .checkbox-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.checkbox input:checked:before,
+.checkbox input:checked + .checkbox-icon:before {
+    background: #EF473A;
+    border-color: #EF473A;
+}
+
+.checkbox input:after,
+.checkbox-icon:after {
+    top: 31%;
+    width: 10px;
+}
+
+.item-checkbox .checkbox {
+    left: 25px;
+    margin-top: -17px;
+}
+
+.help-block {
+    color: #FF0000;
+    font-size: 10px;
+}
+
+.checkbox.checkbox-input-hidden input {
+    display: block !important;
+    position: absolute;
+}

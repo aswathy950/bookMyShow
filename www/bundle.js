@@ -99,8 +99,6 @@
 	        }
 	    });
 	}).config(_app2.default).config(function ($ionicConfigProvider) {
-	    $ionicConfigProvider.backButton.text('Go Back').icon('ion-chevron-left');
-	    $ionicConfigProvider.navBar.alignTitle("center"); //Places them at the bottom for all OS
 	    $ionicConfigProvider.tabs.position("bottom"); //Places them at the bottom for all OS
 	    $ionicConfigProvider.tabs.style("standard"); //Makes them all look the same across all OS
 	});
@@ -166,7 +164,7 @@
 /* 4 */
 /***/ function(module, exports) {
 
-	module.exports = "<ion-tabs class=\"tabs-icon-top tabs-assertive\">\n    <ion-tab title=\"movie\" icon=\"ion-home\" ui-sref=\"app.home.movie\">\n        <ion-nav-view name=\"movie-tab\"></ion-nav-view>\n    </ion-tab>\n    <ion-tab title=\"Profile\" icon=\"ion-person\" ui-sref=\"app.home.profile\">\n        <ion-nav-view name=\"profile-tab\"></ion-nav-view>\n    </ion-tab>\n</ion-tabs>"
+	module.exports = "<ion-tabs class=\"tabs-icon-top tabs-assertive\">\n    <ion-tab title=\"Movie\" icon=\"ion-home\" ui-sref=\"app.home.movie\">\n        <ion-nav-view name=\"movie-tab\"></ion-nav-view>\n    </ion-tab>\n    <ion-tab title=\"Profile\" icon=\"ion-person\" ui-sref=\"app.home.profile\">\n        <ion-nav-view name=\"profile-tab\"></ion-nav-view>\n    </ion-tab>\n</ion-tabs>"
 
 /***/ },
 /* 5 */
@@ -257,13 +255,35 @@
 	    _classCallCheck(this, loginCtrl);
 	
 	    var vm = this;
+	    vm.submitted = false;
+	    vm.invalidCred = false;
+	    vm.keepLogged = false;
+	    vm.userData = JSON.parse(localStorage.getItem("userDetails"));
+	    if (vm.userData) {
+	        vm.userName = vm.userData.userName;
+	        vm.password = vm.userData.password;
+	        vm.keepLogged = true;
+	    }
 	    vm.login = login;
 	
 	    function login() {
-	        if (vm.userName === "aswathy" && vm.password === "achu123") {
-	            $state.go('app.home.movie');
-	        } else {
-	            alert("INVALID CREDENTIALS");
+	        vm.submitted = true;
+	        if (vm.signinForm.$valid) {
+	            if (vm.userName === "aswathy" && vm.password === "achu123") {
+	                vm.invalidCred = false;
+	                if (vm.keepLogged) {
+	                    vm.userDetails = {
+	                        userName: vm.userName,
+	                        password: vm.password
+	                    };
+	                    localStorage.setItem("userDetails", JSON.stringify(vm.userDetails));
+	                } else {
+	                    localStorage.clear();
+	                }
+	                $state.go('app.home.movie');
+	            } else {
+	                vm.invalidCred = true;
+	            }
 	        }
 	    }
 	};
@@ -305,7 +325,7 @@
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"loginForm\">\n\t<img src=\"./img/bookmyshow.png\">\n    <div class=\"list\">\n        <label class=\"item item-input\">\n            <span class=\"input-label\">Username</span>\n            <input type=\"text\" ng-model=\"vm.userName\">\n        </label>\n        <label class=\"item item-input\">\n            <span class=\"input-label\">Password</span>\n            <input type=\"password\" ng-model=\"vm.password\">\n        </label>\n    </div>\n    <button class=\"button button-full button-assertive\" ng-click=\"vm.login()\">\n        LOGIN\n    </button>\n</div>\n"
+	module.exports = "<div class=\"loginForm\">\n    <img src=\"./img/bookmyshow.png\">\n    <form name=\"vm.signinForm\" ng-submit=\"vm.login()\" autocomplete=\"off\" novalidate>\n        <div class=\"list\">\n            <label class=\"item item-input\">\n                <span class=\"input-label\">Username</span>\n                <input type=\"text\" name=\"userName\" id=\"userName\" ng-model=\"vm.userName\" required autofocus ng-change=\"vm.invalidCred = flase\">\n            </label>\n            <p class=\"help-block\" ng-show=\"vm.submitted && vm.signinForm.userName.$error.required\">Username required</p>\n            <label class=\"item item-input\">\n                <span class=\"input-label\">Password</span>\n                <input type=\"password\" name=\"password\" id=\"password\" ng-model=\"vm.password\" required ng-change=\"vm.invalidCred = flase\">\n            </label>\n            <p class=\"help-block\" ng-show=\"vm.submitted && vm.signinForm.password.$error.required\">Password required</p>\n        </div>\n        <p class=\"help-block\" ng-show=\"vm.invalidCred\">Invalid credentials</p>\n        <button class=\"button button-full button-assertive\" type=\"submit\">\n            LOGIN\n        </button>\n    </form>\n</div>\n<ion-checkbox ng-model=\"vm.keepLogged\">Keep me logged in</ion-checkbox>"
 
 /***/ },
 /* 11 */
@@ -521,6 +541,7 @@
 	    vm.takePicture = takePicture;
 	    vm.profPicture = profPicture;
 	    vm.options = {
+	        allowEdit: true,
 	        quality: 75,
 	        targetWidth: 200,
 	        targetHeight: 200
