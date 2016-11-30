@@ -1,18 +1,22 @@
 <div class="loginForm">
     <img src="./img/bookmyshow.png">
-    <div class="list">
-        <label class="item item-input">
-            <span class="input-label">Username</span>
-            <input type="text" ng-model="vm.userName">
-        </label>
-        <label class="item item-input">
-            <span class="input-label">Password</span>
-            <input type="password" ng-model="vm.password">
-        </label>
-    </div>
-    <button class="button button-full button-assertive" ng-click="vm.login()">
-        LOGIN
-    </button>
-    
+    <form name="vm.signinForm" ng-submit="vm.login()" autocomplete="off" novalidate>
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">Username</span>
+                <input type="text" name="userName" id="userName" ng-model="vm.userName" required autofocus ng-change="vm.invalidCred = flase">
+            </label>
+            <p class="help-block" ng-show="vm.submitted && vm.signinForm.userName.$error.required">Username required</p>
+            <label class="item item-input">
+                <span class="input-label">Password</span>
+                <input type="password" name="password" id="password" ng-model="vm.password" required ng-change="vm.invalidCred = flase">
+            </label>
+            <p class="help-block" ng-show="vm.submitted && vm.signinForm.password.$error.required">Username required</p>
+        </div>
+        <p class="help-block" ng-show="vm.invalidCred">Invalid credentials</p>
+        <button class="button button-full button-assertive" type="submit">
+            LOGIN
+        </button>
+    </form>
 </div>
-<ion-checkbox ng-model="filter.pink">Keep me logged in</ion-checkbox>
+<ion-checkbox ng-model="vm.keepLogged">Keep me logged in</ion-checkbox>
