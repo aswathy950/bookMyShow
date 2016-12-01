@@ -1,9 +1,7 @@
 Simple Ionic and webpack example
 =====================
-
-This example project is for my blog post:
-http://blog.grossman.io/writing-es6-ionic-code-with-webpack/
-
+This is a simple example of IONIC framework with ES6, AngularJs and Webpack
+  
 To start simply run
 
 ```bash
