@@ -1,11 +1,24 @@
 class movieCtrl {
     constructor($state, movieService) {
         var vm = this;
-        console.log(vm.selectCity)
-        movieService.movieLists().then(function(response) {
-        	console.log(response.data)
-            vm.movieLists = response.data.EKM;
-        });
+        vm.currentCity = "EKM";
+        vm.updateMovies = updateMovies;
+        vm.updateCity = updateCity;
+
+        function updateMovies() {
+            movieService.movieLists().then(function(response) {
+                angular.forEach(response.data, function(value, key) {
+                    if (key === vm.currentCity) {
+                        vm.movieLists = value;
+                    }
+                });
+            });
+        }
+        updateMovies();
+
+        function updateCity() {
+            updateMovies();
+        }
     }
 }
 

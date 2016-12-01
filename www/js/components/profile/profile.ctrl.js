@@ -6,7 +6,7 @@ class profileCtrl {
         vm.takePicture = takePicture;
         vm.profPicture = profPicture;
         vm.options = {
-            allowEdit : true,
+            allowEdit: true,
             quality: 75,
             targetWidth: 200,
             targetHeight: 200,

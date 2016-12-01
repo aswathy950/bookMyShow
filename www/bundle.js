@@ -136,7 +136,7 @@
 	        url: "",
 	        abstract: true
 	    }).state('app.home', {
-	        url: "/",
+	        url: "/home",
 	        abstract: true,
 	        views: {
 	            'footer@': {
@@ -158,7 +158,7 @@
 /* 3 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"bar bar-header bar-assertive\">\n    <h1 class=\"title\">BookMyShow</h1>\n    <div class=\"buttons\">\n        <button class=\"button button-dark\" ng-click=\"vm.logOut()\">Logout</button>\n    </div>\n</div>"
+	module.exports = "<!-- <div class=\"bar bar-header bar-assertive\">\n    <h1 class=\"title\">BookMyShow</h1>\n    <div class=\"buttons\">\n        <button class=\"button button-dark\" ng-click=\"vm.logOut()\">Logout</button>\n    </div>\n</div> -->\n<!-- <ion-nav-bar class=\"bar-assertive\">\n  <ion-nav-back-button class=\"button-full\"\n    ng-click=\"myGoBack()\">\n    <i class=\"ion-arrow-left-c\"></i> Back\n  </ion-nav-back-button>\n</ion-nav-bar> -->"
 
 /***/ },
 /* 4 */
@@ -200,7 +200,7 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var headerCtrl = function headerCtrl($state) {
+	var headerCtrl = function headerCtrl($state, $ionicHistory) {
 	    _classCallCheck(this, headerCtrl);
 	
 	    var vm = this;
@@ -208,7 +208,7 @@
 	
 	    function logOut() {
 	        $state.go('app.login');
-	    }
+	    };
 	};
 	
 	exports.default = headerCtrl;
@@ -418,7 +418,7 @@
 	
 	function movieRoutes($stateProvider) {
 	    $stateProvider.state('app.home.movie', {
-	        url: "movie",
+	        url: "/movie",
 	        views: {
 	            'content@': {
 	                template: _movieView2.default,
@@ -435,7 +435,7 @@
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"list\">\n    <label class=\"item item-input item-select\">\n        <div class=\"input-label\">\n            Select your city:\n        </div>\n        <select>\n            <option>TVM</option>\n            <option selected>EKM</option>\n        </select>\n    </label>\n</div>\n<div class=\"movieList\">\n    <div class=\"list\">\n        <a class=\"item item-thumbnail-left\" ng-repeat=\"movieList in  vm.movieLists\" ui-sref=\"app.home.theatre\">\n            <img ng-src=\"./img/{{movieList.img}}\">\n            <h2>{{movieList.name}}</h2>\n            <p>{{movieList.desc}}</p>\n        </a>\n    </div>\n</div>"
+	module.exports = "<div class=\"list\">\n    <label class=\"item item-input item-select\">\n        <div class=\"input-label\">\n            Select your city:\n        </div>\n        <select>\n            <option value=\"TVM\">TVM</option>\n            <option value=\"EKM\" selected>EKM</option>\n        </select>\n    </label>\n</div>\n<div class=\"movieList\">\n    <div class=\"list\">\n        <a class=\"item item-thumbnail-left\" ng-repeat=\"movieList in  vm.movieLists\" ui-sref=\"app.home.theatre\">\n            <img ng-src=\"./img/{{movieList.img}}\">\n            <h2>{{movieList.name}}</h2>\n            <p>{{movieList.desc}}</p>\n        </a>\n    </div>\n</div>"
 
 /***/ },
 /* 16 */
@@ -591,7 +591,7 @@
 	
 	function profileRoutes($stateProvider) {
 	    $stateProvider.state('app.home.profile', {
-	        url: "profile",
+	        url: "/profile",
 	        views: {
 	            'content@': {
 	                template: _profileView2.default,
@@ -701,7 +701,7 @@
 	
 	function theatreRoutes($stateProvider) {
 	    $stateProvider.state('app.home.theatre', {
-	        url: "theatre",
+	        url: "/theatre",
 	        views: {
 	            'content@': {
 	                template: _theatreView2.default,
@@ -784,7 +784,7 @@
 	
 	function bookingRoutes($stateProvider) {
 	    $stateProvider.state('app.home.booking', {
-	        url: "booking",
+	        url: "/booking",
 	        views: {
 	            'content@': {
 	                template: _bookingView2.default,

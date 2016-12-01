@@ -3,7 +3,7 @@ import theatreView from './theatre.view.html';
 function theatreRoutes($stateProvider) {
     $stateProvider
         .state('app.home.theatre', {
-            url: "theatre",
+            url: "/theatre/:city?movie",
             views: {
                 'content@': {
                     template: theatreView,

@@ -3,7 +3,7 @@ import movieView from './movie.view.html';
 function movieRoutes($stateProvider) {
     $stateProvider
         .state('app.home.movie', {
-            url: "movie",
+            url: "/movie",
             views: {
                 'content@': {
                     template: movieView,
