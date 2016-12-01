@@ -1,7 +1,7 @@
 {
     "EKM": {
         "Charlie": [{
-            "name": "Aries Plus",
+            "name": "Aries Plux",
             "img": "aries.jpg",
             "place": "Thampanoor"
         }, {
@@ -17,6 +17,24 @@
             "name": "Krishna",
             "img": "vtracks.jpg",
             "place": "Kadinamkulam"
+        }],
+        "Kali": [{
+            "name": "Kairali",
+            "img": "aries.jpg",
+            "place": "Aluva"
+        }, {
+            "name": "Nila",
+            "img": "vtracks.jpg",
+            "place": "Mattanchery"
+        }],
+        "Mili": [{
+            "name": "Sree",
+            "img": "aries.jpg",
+            "place": "Fort Kochi"
+        }, {
+            "name": "Sree Visakh",
+            "img": "vtracks.jpg",
+            "place": "Kakanadu"
         }]
     },
     "TVM": {
@@ -37,6 +55,24 @@
             "name": "Sree Visakh",
             "img": "vtracks.jpg",
             "place": "Kakanadu"
+        }],
+        "Charlie": [{
+            "name": "Aries Plux",
+            "img": "aries.jpg",
+            "place": "Thampanoor"
+        }, {
+            "name": "G-Tracks",
+            "img": "vtracks.jpg",
+            "place": "Kadinamkulam"
+        }],
+        "Ezra": [{
+            "name": "V-Tracks",
+            "img": "aries.jpg",
+            "place": "Thampanoor"
+        }, {
+            "name": "Krishna",
+            "img": "vtracks.jpg",
+            "place": "Kadinamkulam"
         }]
     }
 }

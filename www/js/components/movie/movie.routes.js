@@ -4,6 +4,9 @@ function movieRoutes($stateProvider) {
     $stateProvider
         .state('app.home.movie', {
             url: "/movie",
+            data: {
+                requireLogin: true
+            },
             views: {
                 'content@': {
                     template: movieView,

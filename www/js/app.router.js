@@ -1,7 +1,7 @@
 import headerView from './views/header.html';
 import footerView from './views/footer.html';
 
-function AppRouter($stateProvider) {
+function AppRouter($stateProvider, $urlRouterProvider, $locationProvider) {
     'use strict';
     $stateProvider
         .state('app', {
@@ -23,6 +23,8 @@ function AppRouter($stateProvider) {
             }
 
         });
+    $locationProvider.html5Mode(true);
+    $urlRouterProvider.otherwise('/');
 }
 
 export default AppRouter;

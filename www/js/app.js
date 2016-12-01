@@ -23,7 +23,7 @@ angular.module('BookMyShow', [
 
 ])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, $state) {
         $ionicPlatform.ready(function() {
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -39,9 +39,36 @@ angular.module('BookMyShow', [
                 StatusBar.styleDefault();
             }
         });
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+            var pageData = "";
+            if (toState.data) {
+                pageData = toState.data;
+            }
+            var loggedIn = localStorage.getItem("loggedIn");
+
+            // handle accessing homes pages for logged in users
+            if (loggedIn && pageData && pageData.requireLogin === false) {
+                event.preventDefault();
+                if (toState.name === 'app.login') {
+                    $state.transitionTo('app.home.movie', {}, {
+                        reload: true
+                    });
+                }
+            }
+
+            // handle accessing inner pages for non-logged in users
+            if (!loggedIn && pageData && pageData.requireLogin === true) {
+                event.preventDefault();
+                if (toState.name !== 'app.login') {
+                    $state.transitionTo('app.login', {}, {
+                        reload: true
+                    });
+                }
+            }
+        });
     })
     .config(router)
     .config(function($ionicConfigProvider) {
         $ionicConfigProvider.tabs.position("bottom"); //Places them at the bottom for all OS
         $ionicConfigProvider.tabs.style("standard"); //Makes them all look the same across all OS
-    })
+    });

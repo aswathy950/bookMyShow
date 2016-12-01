@@ -4,6 +4,9 @@ function profileRoutes($stateProvider) {
     $stateProvider
         .state('app.home.profile', {
             url: "/profile",
+            data: {
+                requireLogin: true
+            },
             views: {
                 'content@': {
                     template: profileView,

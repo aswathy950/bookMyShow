@@ -24,8 +24,9 @@ class loginCtrl {
                         }
                         localStorage.setItem("userDetails", JSON.stringify(vm.userDetails));
                     } else {
-                        localStorage.clear();
+                        localStorage.removeItem("userDetails");
                     }
+                    localStorage.setItem("loggedIn", "true");
                     $state.go('app.home.movie');
                 } else {
                     vm.invalidCred = true;

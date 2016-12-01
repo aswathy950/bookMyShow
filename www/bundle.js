@@ -158,7 +158,7 @@
 /* 3 */
 /***/ function(module, exports) {
 
-	module.exports = "<!-- <div class=\"bar bar-header bar-assertive\">\n    <h1 class=\"title\">BookMyShow</h1>\n    <div class=\"buttons\">\n        <button class=\"button button-dark\" ng-click=\"vm.logOut()\">Logout</button>\n    </div>\n</div> -->\n<!-- <ion-nav-bar class=\"bar-assertive\">\n  <ion-nav-back-button class=\"button-full\"\n    ng-click=\"myGoBack()\">\n    <i class=\"ion-arrow-left-c\"></i> Back\n  </ion-nav-back-button>\n</ion-nav-bar> -->"
+	module.exports = "<div class=\"bar bar-header bar-assertive\">\n    <h1 class=\"title\">BookMyShow</h1>\n    <div class=\"buttons\">\n        <button class=\"button button-dark\" ng-click=\"vm.logOut()\">Logout</button>\n    </div>\n</div>\n"
 
 /***/ },
 /* 4 */
@@ -392,10 +392,24 @@
 	    _classCallCheck(this, movieCtrl);
 	
 	    var vm = this;
+	    vm.currentCity = "EKM";
+	    vm.updateMovies = updateMovies;
+	    vm.updateCity = updateCity;
 	
-	    movieService.movieLists().then(function (response) {
-	        vm.movieLists = response.data;
-	    });
+	    function updateMovies() {
+	        movieService.movieLists().then(function (response) {
+	            angular.forEach(response.data, function (value, key) {
+	                if (key === vm.currentCity) {
+	                    vm.movieLists = value;
+	                }
+	            });
+	        });
+	    }
+	    updateMovies();
+	
+	    function updateCity() {
+	        updateMovies();
+	    }
 	};
 	
 	exports.default = movieCtrl;
@@ -435,7 +449,7 @@
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"list\">\n    <label class=\"item item-input item-select\">\n        <div class=\"input-label\">\n            Select your city:\n        </div>\n        <select>\n            <option value=\"TVM\">TVM</option>\n            <option value=\"EKM\" selected>EKM</option>\n        </select>\n    </label>\n</div>\n<div class=\"movieList\">\n    <div class=\"list\">\n        <a class=\"item item-thumbnail-left\" ng-repeat=\"movieList in  vm.movieLists\" ui-sref=\"app.home.theatre\">\n            <img ng-src=\"./img/{{movieList.img}}\">\n            <h2>{{movieList.name}}</h2>\n            <p>{{movieList.desc}}</p>\n        </a>\n    </div>\n</div>"
+	module.exports = "<div class=\"list\">\n    <label class=\"item item-input item-select\">\n        <div class=\"input-label\">\n            Select your city:\n        </div>\n        <select ng-model=\"vm.currentCity\" ng-change=\"vm.updateCity()\">\n            <option value=\"TVM\">TVM</option>\n            <option value=\"EKM\" selected>EKM</option>\n        </select>\n    </label>\n</div>\n<div class=\"movieList\">\n    <div class=\"list\">\n        <a class=\"item item-thumbnail-left\" ng-repeat=\"movieList in  vm.movieLists\" ui-sref=\"app.home.theatre({city: vm.currentCity, movie: movieList.name})\">\n            <img ng-src=\"./img/{{movieList.img}}\">\n            <h2>{{movieList.name}}</h2>\n            <p>{{movieList.desc}}</p>\n        </a>\n    </div>\n</div>"
 
 /***/ },
 /* 16 */
@@ -671,13 +685,23 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var theatreCtrl = function theatreCtrl($state, theatreService) {
+	var theatreCtrl = function theatreCtrl($state, $stateParams, theatreService) {
 	    _classCallCheck(this, theatreCtrl);
 	
 	    var vm = this;
+	    vm.currentCity = $stateParams.city;
+	    vm.movie = $stateParams.movie;
 	
 	    theatreService.theatreLists().then(function (response) {
-	        vm.theatreLists = response.data;
+	        angular.forEach(response.data, function (value, key) {
+	            if (key === vm.currentCity) {
+	                angular.forEach(value, function (value, key) {
+	                    if (key === vm.movie) {
+	                        vm.theatreLists = value;
+	                    }
+	                });
+	            }
+	        });
 	    });
 	};
 	
@@ -701,7 +725,7 @@
 	
 	function theatreRoutes($stateProvider) {
 	    $stateProvider.state('app.home.theatre', {
-	        url: "/theatre",
+	        url: "/theatre?city?movie",
 	        views: {
 	            'content@': {
 	                template: _theatreView2.default,

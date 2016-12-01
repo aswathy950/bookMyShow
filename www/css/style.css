@@ -1,9 +1,5 @@
 /* Empty. Add your own CSS if you like */
 
-body {
-    overflow: hidden;
-}
-
 #content {
     margin-top: 50px;
     padding-left: 10px;
@@ -112,3 +108,8 @@ body {
     display: block !important;
     position: absolute;
 }
+
+
+/*.back-button.hide {
+    display: block !important;
+}*/
