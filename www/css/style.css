@@ -1,5 +1,11 @@
 /* Empty. Add your own CSS if you like */
 
+ion-scroll[direction=x] {
+  width: 100vw;
+}
+ion-scroll[direction=y] {
+  height: 100vh;
+}
 #content {
     margin-top: 50px;
     padding-left: 10px;
@@ -109,7 +115,6 @@
     position: absolute;
 }
 
-
-/*.back-button.hide {
-    display: block !important;
-}*/
+.keepLogged {
+    border: 0;
+}

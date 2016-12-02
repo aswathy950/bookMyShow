@@ -82,7 +82,7 @@
 	// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 	// the 2nd parameter is an array of 'requires'
 	// Ionic Starter App
-	angular.module('BookMyShow', ['ionic', _shared2.default.name, _login2.default.name, _movie2.default.name, _profile2.default.name, _theatre2.default.name, _booking2.default.name]).run(function ($ionicPlatform) {
+	angular.module('BookMyShow', ['ionic', _shared2.default.name, _login2.default.name, _movie2.default.name, _profile2.default.name, _theatre2.default.name, _booking2.default.name]).run(function ($ionicPlatform, $rootScope, $state) {
 	    $ionicPlatform.ready(function () {
 	        if (window.cordova && window.cordova.plugins.Keyboard) {
 	            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -96,6 +96,33 @@
 	        }
 	        if (window.StatusBar) {
 	            StatusBar.styleDefault();
+	        }
+	    });
+	    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+	        var pageData = "";
+	        if (toState.data) {
+	            pageData = toState.data;
+	        }
+	        var loggedIn = localStorage.getItem("loggedIn");
+	
+	        // handle accessing homes pages for logged in users
+	        if (loggedIn && pageData && pageData.requireLogin === false) {
+	            event.preventDefault();
+	            if (toState.name === 'app.login') {
+	                $state.transitionTo('app.home.movie', {}, {
+	                    reload: true
+	                });
+	            }
+	        }
+	
+	        // handle accessing inner pages for non-logged in users
+	        if (!loggedIn && pageData && pageData.requireLogin === true) {
+	            event.preventDefault();
+	            if (toState.name !== 'app.login') {
+	                $state.transitionTo('app.login', {}, {
+	                    reload: true
+	                });
+	            }
 	        }
 	    });
 	}).config(_app2.default).config(function ($ionicConfigProvider) {
@@ -158,7 +185,7 @@
 /* 3 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"bar bar-header bar-assertive\">\n    <h1 class=\"title\">BookMyShow</h1>\n    <div class=\"buttons\">\n        <button class=\"button button-dark\" ng-click=\"vm.logOut()\">Logout</button>\n    </div>\n</div>\n"
+	module.exports = "<div class=\"bar bar-header bar-assertive\">\n    <button class=\"button button-clear\" ng-click=\"vm.myGoBack()\"><i class=\"ion-arrow-left-c\"></i> Back</button>\n    <h1 class=\"title\">BookMyShow</h1>\n    <div class=\"buttons\">\n        <button class=\"button button-dark\" ng-click=\"vm.logOut()\">Logout</button>\n    </div>\n</div>"
 
 /***/ },
 /* 4 */
@@ -192,7 +219,7 @@
 /* 6 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -200,14 +227,20 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var headerCtrl = function headerCtrl($state, $ionicHistory) {
+	var headerCtrl = function headerCtrl($state, $ionicHistory, $window) {
 	    _classCallCheck(this, headerCtrl);
 	
 	    var vm = this;
 	    vm.logOut = logOut;
+	    vm.myGoBack = myGoBack;
 	
 	    function logOut() {
+	        localStorage.removeItem("loggedIn");
 	        $state.go('app.login');
+	    };
+	
+	    function myGoBack($ionicHistory) {
+	        $window.history.back();
 	    };
 	};
 	
@@ -278,8 +311,9 @@
 	                    };
 	                    localStorage.setItem("userDetails", JSON.stringify(vm.userDetails));
 	                } else {
-	                    localStorage.clear();
+	                    localStorage.removeItem("userDetails");
 	                }
+	                localStorage.setItem("loggedIn", "true");
 	                $state.go('app.home.movie');
 	            } else {
 	                vm.invalidCred = true;
@@ -309,6 +343,9 @@
 	function loginRoutes($stateProvider) {
 	    $stateProvider.state('app.login', {
 	        url: "",
+	        data: {
+	            requireLogin: false
+	        },
 	        views: {
 	            'content@': {
 	                template: _loginView2.default,
@@ -433,6 +470,9 @@
 	function movieRoutes($stateProvider) {
 	    $stateProvider.state('app.home.movie', {
 	        url: "/movie",
+	        data: {
+	            requireLogin: true
+	        },
 	        views: {
 	            'content@': {
 	                template: _movieView2.default,
@@ -606,6 +646,9 @@
 	function profileRoutes($stateProvider) {
 	    $stateProvider.state('app.home.profile', {
 	        url: "/profile",
+	        data: {
+	            requireLogin: true
+	        },
 	        views: {
 	            'content@': {
 	                template: _profileView2.default,
@@ -726,6 +769,9 @@
 	function theatreRoutes($stateProvider) {
 	    $stateProvider.state('app.home.theatre', {
 	        url: "/theatre?city?movie",
+	        data: {
+	            requireLogin: true
+	        },
 	        views: {
 	            'content@': {
 	                template: _theatreView2.default,
@@ -809,6 +855,9 @@
 	function bookingRoutes($stateProvider) {
 	    $stateProvider.state('app.home.booking', {
 	        url: "/booking",
+	        data: {
+	            requireLogin: true
+	        },
 	        views: {
 	            'content@': {
 	                template: _bookingView2.default,

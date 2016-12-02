@@ -3,7 +3,7 @@ import loginView from './login.view.html';
 function loginRoutes($stateProvider) {
     $stateProvider
         .state('app.login', {
-            url: "/",
+            url: "",
             data: {
                 requireLogin: false
             },
