@@ -3,7 +3,10 @@ import bookingView from './booking.view.html';
 function bookingRoutes($stateProvider) {
     $stateProvider
         .state('app.home.booking', {
-            url: "booking",
+            url: "/booking",
+            data: {
+                requireLogin: true
+            },
             views: {
                 'content@': {
                     template: bookingView,

@@ -3,15 +3,15 @@
         <div class="input-label">
             Select your city:
         </div>
-        <select>
-            <option>TVM</option>
-            <option selected>EKM</option>
+        <select ng-model="vm.currentCity" ng-change="vm.updateCity()">
+            <option value="TVM">TVM</option>
+            <option value="EKM" selected>EKM</option>
         </select>
     </label>
 </div>
 <div class="movieList">
     <div class="list">
-        <a class="item item-thumbnail-left" ng-repeat="movieList in  vm.movieLists" ui-sref="app.home.theatre">
+        <a class="item item-thumbnail-left" ng-repeat="movieList in  vm.movieLists" ui-sref="app.home.theatre({city: vm.currentCity, movie: movieList.name})">
             <img ng-src="./img/{{movieList.img}}">
             <h2>{{movieList.name}}</h2>
             <p>{{movieList.desc}}</p>

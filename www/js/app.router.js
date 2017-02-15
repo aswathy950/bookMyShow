@@ -9,7 +9,7 @@ function AppRouter($stateProvider) {
             abstract: true
         })
         .state('app.home', {
-            url: "/",
+            url: "/home",
             abstract: true,
             views: {
                 'footer@': {
@@ -22,7 +22,7 @@ function AppRouter($stateProvider) {
                 }
             }
 
-        });
+        });  
 }
 
 export default AppRouter;

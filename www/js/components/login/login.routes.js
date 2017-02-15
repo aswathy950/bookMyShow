@@ -4,6 +4,9 @@ function loginRoutes($stateProvider) {
     $stateProvider
         .state('app.login', {
             url: "",
+            data: {
+                requireLogin: false
+            },
             views: {
                 'content@': {
                     template: loginView,

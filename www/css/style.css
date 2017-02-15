@@ -1,9 +1,11 @@
 /* Empty. Add your own CSS if you like */
 
-body {
-    overflow: hidden;
+ion-scroll[direction=x] {
+  width: 100vw;
 }
-
+ion-scroll[direction=y] {
+  height: 100vh;
+}
 #content {
     margin-top: 50px;
     padding-left: 10px;
@@ -45,6 +47,11 @@ body {
 
 .movieList .item p {
     color: black;
+    white-space: normal;
+}
+
+.movieList .item h2 {
+    font-weight: bold;
 }
 
 .profileImg {
@@ -75,7 +82,8 @@ body {
     height: auto;
 }
 
-.checkbox input, .checkbox-icon {
+.checkbox input,
+.checkbox-icon {
     width: 20px;
     height: 20px;
 }
@@ -105,4 +113,8 @@ body {
 .checkbox.checkbox-input-hidden input {
     display: block !important;
     position: absolute;
+}
+
+.keepLogged {
+    border: 0;
 }
